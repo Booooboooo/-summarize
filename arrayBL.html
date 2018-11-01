@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>将二维或多维数组遍历成扁平数组</title>
+</head>
+<body>
+ 
+</body>
+<script>
+array = [1,2,3,[4,5,[6,7],8],[9,10,11]]; 
+// 法一：   
+// arr1=array.reduce(function(a,b){return a.concat(b)})
+// Uncaught TypeError: a.concat is not a function
+//这种方法只能遍历纯净二维的数组，如：[[1,2],[3,4],[5,6]]，结果[1,2,3,4,5,6]，[1,2,3,[4,5]]会报错
+
+
+
+//法二：
+// var arr1 = array.concat.apply([], array);
+//[1, 2, 3, 4, 5, Array(2), 8, 9, 10, 11]
+//这种方法不会报错，但是不能实现效果，只能实现混合的二维数组，不能超过二维数组
+
+
+//法三：
+// arr1=array.toString().split(',')
+// ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
+//这种方法虽然能实现混合多为数组的遍历，但是还需处理引号
+
+
+
+//法四:
+//arr1=[].concat(...array)
+//[1, 2, 3, 4, 5, Array(2), 8, 9, 10, 11]
+//同法二一样，这种方法不会报错，但是不能实现效果，只能实现混合的二维数组，不能超过二维数组
+
+
+
+
+//法五：递归
+// var reduced = [];
+// function reduceDimension(arr) {
+    
+//     for (var i = 0; i < arr.length; i++) {
+//         if(typeof(arr[i])==="number"){
+//             reduced.push(arr[i]);
+//         }else{
+            
+//                 reduced.concat(reduceDimension(arr[i]));
+//         }
+//         }   
+//     return reduced;
+// }
+
+//console.log(reduceDimension(array))
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+//利用递归和判断语句可以完美解决，但是注意else里面的reduced.concat()切记不能换做reduced.push(),否则结果会是[1, 2, 3, 4, 5, 6, 7, Array(14), 8, Array(14), 9, 10, 11, Array(14)]，一直循环遍历
+
+
+</script>
+</html>
