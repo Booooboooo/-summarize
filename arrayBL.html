@@ -46,7 +46,7 @@ array = [1,2,3,[4,5,[6,7],8],[9,10,11]];
 //             reduced.push(arr[i]);
 //         }else{
             
-//                 reduced.concat(reduceDimension(arr[i]));
+//                reduceDimension(arr[i]);
 //         }
 //         }   
 //     return reduced;
@@ -54,7 +54,7 @@ array = [1,2,3,[4,5,[6,7],8],[9,10,11]];
 
 //console.log(reduceDimension(array))
 // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-//利用递归和判断语句可以完美解决，但是注意else里面的reduced.concat()切记不能换做reduced.push(),否则结果会是[1, 2, 3, 4, 5, 6, 7, Array(14), 8, Array(14), 9, 10, 11, Array(14)]，一直循环遍历
+//利用递归和判断语句可以完美解决
 
 
 </script>
